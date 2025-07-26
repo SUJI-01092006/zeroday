@@ -1,104 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
-  <title>Top Section with Boxes</title>
+  <title>Sri Eshwar Dashboard</title>
   <link rel="icon" href="seceimage.jpg">
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #4964df; /* Full-page blue background */
+      background-color: #4964df; /* Blue background */
     }
 
     .top-bar {
-      background-color: #ffc107; /* Yellow top background */
+      background-color: #ffc107;
       padding: 20px;
       display: flex;
-      justify-content: center; /* Centers content horizontally */
-      align-items: center;     /* Centers image + text vertically */
-      gap: 10px;               /* Space between image and text */
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
     }
 
     .top-bar img {
       height: 100px;
-      
-    
     }
 
     .top-bar span {
       font-size: 24px;
       font-weight: bold;
       color: #000;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4)
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    p {
+      font-size: 24px;
+      text-align: center;
+      margin: 20px;
+      color: white;
     }
 
     .box-container {
       display: flex;
-      margin-top: 40px;
-      justify-content: center;
       flex-wrap: wrap;
-      gap: 75px;
-      padding: 75px 50px ;
+      justify-content: center;
+      gap: 50px;
+      padding: 40px;
     }
 
     .box {
       background-color: #ffffff;
       color: #333;
-      width: 150px;
-      padding: 35px ;
-      text-align: center;
+      width: 180px;
+      padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      
+      text-align: center;
+      font-size: 18px;
       font-weight: bold;
-      font-size:20px;
-      box-shadow: 4px 4px 10px rgba(17, 3, 3, 0.726);
-      transition: transform 0.2s;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .box:hover {
       transform: scale(1.05);
       cursor: pointer;
+      box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.4);
     }
-    .back-link {
-  display: block;
-  text-align:center;
-  
-  font-size: 16px;
-  color: black; /* change link color */
-  text-decoration: underline;
-}
 
-
-p{
- font-size:30px;
- text-align:center;}
+    .box a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
   </style>
 </head>
 <body>
 
   <div class="top-bar">
-    <img src="seceimage.jpg" alt="Logo"> 
+    <img src="seceimage.jpg" alt="Sri Eshwar Logo">
     <span>Sri Eshwar Dashboard</span>
   </div>
-<p><strong><br>"You don’t have to see the whole staircase, just take the first step."</strong></p>
+
+  <p><strong>"You don’t have to see the whole staircase, just take the first step."</strong></p>
 
   <div class="box-container">
-    
-    
-    <div class="box"><a href="timetable.html" class="back-link">TimeTable</a></div>
-    <div class="box"><a href="complaint.html" class="back-link">Complaint</a></div>
-    <div class="box"><a href="skill_exchange.html" class="back-link">Skills Exchange</a></div>
-    <div class="box"><a href="polls_feedback.html" class="back-link">Polls and Feedback</a></div>
-   
-    <div class="box"><a href="technews.html" class="back-link">Tech News</a></div>
-   <div class="box"><a href="try.html" class="back-link">Announcements</a></div>
-    
-
+    <div class="box"><a href="timetable.html">TimeTable</a></div>
+    <div class="box"><a href="complaint.html">Complaint</a></div>
+    <div class="box"><a href="skill_exchange.html">Skills Exchange</a></div>
+    <div class="box"><a href="polls_feedback.html">Polls and Feedback</a></div>
+    <div class="box"><a href="technews.html">Tech News</a></div>
+    <div class="box"><a href="try.html">Announcements</a></div>
   </div>
-
-  
 
 </body>
 </html>

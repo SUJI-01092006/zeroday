@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Lost & Found Auth</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 10px;
+      width: 100%;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #error {
+      color: red;
+      margin-top: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .link {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .link a {
+      color: #4285f4;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="signupForm">
+    <h2>Sign Up</h2>
+    <input type="text" id="signupUsername" placeholder="Username">
+    <input type="password" id="signupPassword" placeholder="Password">
+    <button onclick="signup()"><a href=try2.html>Sign Up</a></button>
+    <p class="link">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+    <p id="errorSignup"></p>
+  </div>
+
+  <div class="container hidden" id="loginForm">
+    <h2>Login</h2>
+    <input type="text" id="loginUsername" placeholder="Username">
+    <input type="password" id="loginPassword" placeholder="Password">
+    <button onclick="login()"><a href=try2.html>Login</a></button>
+    <p class="link">No account? <a href="#" onclick="showSignup()">Sign up</a></p>
+    <p id="errorLogin"></p>
+  </div>
+
+  <div class="container hidden" id="dashboard">
+    <h2>Welcome to Lost & Found</h2>
+    <button onclick="startApp()">Start</button>
+  </div>
+
+  <script>
+    function showLogin() {
+      document.getElementById("signupForm").classList.add("hidden");
+      document.getElementById("loginForm").classList.remove("hidden");
+    }
+
+    function showSignup() {
+      document.getElementById("loginForm").classList.add("hidden");
+      document.getElementById("signupForm").classList.remove("hidden");
+    }
+
+    function signup() {
+      const username = document.getElementById("signupUsername").value.trim();
+      const password = document.getElementById("signupPassword").value;
+
+      if (!username || !password) {
+        document.getElementById("errorSignup").textContent = "Please fill in both fields.";
+        return;
+      }
+
+      localStorage.setItem("user", username);
+      localStorage.setItem("pass", password);
+      alert("Sign-up successful! Please log in.");
+      showLogin();
+    }
+
+    function login() {
+      const username = document.getElementById("loginUsername").value.trim();
+      const password = document.getElementById("loginPassword").value;
+
+      const storedUser = localStorage.getItem("user");
+      const storedPass = localStorage.getItem("pass");
+
+      if (username === storedUser && password === storedPass) {
+        document.getElementById("loginForm").classList.add("hidden");
+        document.getElementById("dashboard").classList.remove("hidden");
+      } else {
+        document.getElementById("errorLogin").textContent = "Incorrect username or password.";
+      }
+    }
+
+    function startApp() {
+      alert("Redirecting to app...");
+      // You can change this to another page if needed:
+      window.location.href = "report_item.html";
+    }
+  </script>
+
+</body>
+</html>
