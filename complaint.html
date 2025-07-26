@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complaint Box</title>
+  <style>
+    body {
+      background-color: #e3f2fd;
+      font-family: Arial, sans-serif;
+      color: #0d47a1;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      background-color: #a09b6b;
+      padding: 1rem;
+      border: 2px solid #fbc02d;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    select, textarea, button {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border: 1px solid #0d47a1;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #1976d2;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1565c0;
+    }
+
+    .complaints {
+      background-color: #fff;
+      border: 2px dashed #fbc02d;
+      padding: 1rem;
+    }
+
+    .complaint {
+      border-bottom: 1px solid #ccc;
+      padding: 0.5rem 0;
+    }
+
+    .complaint:last-child {
+      border-bottom: none;
+    }
+
+    .delete-btn {
+      color: red;
+      float: right;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Complaint Box</h1>
+
+  <form action="/submit" method="POST">
+    <label for="complaintType">Select Complaint Type:</label>
+    <select name="complaintType" id="complaintType" onchange="handleTypeChange()" required>
+      <option value="Hostel">Hostel Complaint</option>
+      <option value="College">College Complaint</option>
+    </select>
+
+    <div id="subcategoryDiv">
+      <label for="subcategory">Select Hostel Subcategory:</label>
+      <select name="subcategory" id="subcategory">
+        <option value="Electric">Electric</option>
+        <option value="Plumbing">Plumbing</option>
+        <option value="Cleaning">Cleaning</option>
+        <option value="Water Supply">Water Supply</option>
+        <option value="Water Supply">Food</option>
+
+
+      </select>
+    </div>
+
+    <label for="complaintText">Enter Complaint:</label>
+    <textarea name="complaintText" id="complaintText" rows="4" required></textarea>
+
+    <button type="submit">Submit Complaint</button>
+  </form>
+
+  
+
+
+<script>
+    function handleTypeChange() {
+      const type = document.getElementById('complaintType').value;
+      const subDiv = document.getElementById('subcategoryDiv');
+      subDiv.style.display = (type === 'Hostel') ? 'block' : 'none';
+      filterComplaints();
+    }
+
+    function filterComplaints() {
+      const selectedType = document.getElementById('complaintType').value;
+      const selectedSub = document.getElementById('subcategory')?.value || "";
+
+      const complaints = document.querySelectorAll('.complaint');
+
+      complaints.forEach(comp => {
+        const typeMatch = comp.dataset.type === selectedType;
+        const subMatch = (selectedType === 'Hostel') ? comp.dataset.sub === selectedSub : true;
+
+        comp.style.display = (typeMatch && subMatch) ? 'block' : 'none';
+      });
+    }
+    document.getElementById('subcategory').addEventListener('change', filterComplaints);
+    window.onload = () => {
+      handleTypeChange();
+    };
+  </script>
+</body>
+</html>
